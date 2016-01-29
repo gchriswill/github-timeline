@@ -1,5 +1,6 @@
 package me.gchriswill.githubtimeline;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,12 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
-
 import java.util.List;
 
-/**
- * Created by gchriswill on 1/27/16.
- */
 public class NewsAdapter extends BaseAdapter implements View.OnClickListener{
 
     Activity context;
@@ -31,6 +28,7 @@ public class NewsAdapter extends BaseAdapter implements View.OnClickListener{
 
     News rowItem;
 
+    @SuppressLint("InflateParams")
     public View getView(int position, View convertView, ViewGroup parent) {
 
         holder = null;
@@ -39,7 +37,9 @@ public class NewsAdapter extends BaseAdapter implements View.OnClickListener{
 
         LayoutInflater mInflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
         if (convertView == null) {
+
             convertView = mInflater.inflate(R.layout.row_article, null);
             holder = new ViewHolder();
 
@@ -47,8 +47,11 @@ public class NewsAdapter extends BaseAdapter implements View.OnClickListener{
             holder.tvName = (TextView) convertView.findViewById(R.id.tvName);
             holder.tvEmail= (TextView) convertView.findViewById(R.id.tvEmail);
             convertView.setTag(holder);
+
         } else {
+
             holder = (ViewHolder) convertView.getTag();
+
         }
 
         holder.tvTitle.setText(rowItem.title);
@@ -70,10 +73,11 @@ public class NewsAdapter extends BaseAdapter implements View.OnClickListener{
 
     }
 
+    @SuppressWarnings("SuspiciousMethodCalls")
     @Override
     public long getItemId(int position) {
 
-        return rowItems.indexOf(getItem(position));
+        return rowItems.indexOf(getItem(position) );
 
     }
 

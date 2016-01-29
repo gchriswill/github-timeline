@@ -3,18 +3,13 @@ package me.gchriswill.githubtimeline;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-
 import org.apache.commons.io.IOUtils;
-
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-/**
- * Created by gchriswill on 1/27/16.
- */
 public class HttpRequest {
 
     static String response = null;

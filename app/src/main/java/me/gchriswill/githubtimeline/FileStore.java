@@ -11,17 +11,12 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by gchriswill on 1/27/16.
- */
 public class FileStore {
 
-    public static final String TAG = "Storer";
     public String File = "cache";
 
     public void fileWriter(News news, Context inContext) {
 
-        //News c = news;
         List<News> internalDataStored = fileReader(inContext);
 
         boolean check = false;
@@ -45,7 +40,6 @@ public class FileStore {
 
         }
 
-
         try {
 
             FileOutputStream fos;
@@ -65,6 +59,7 @@ public class FileStore {
 
     }
 
+    @SuppressWarnings("unchecked")
     public List<News> fileReader( Context inContext) {
 
         FileInputStream fis;
@@ -76,6 +71,7 @@ public class FileStore {
             ObjectInputStream ois = new ObjectInputStream(fis);
 
             internalDataStored = (List<News>) ois.readObject();
+
             ois.close();
 
         } catch (ClassNotFoundException | IOException e) {

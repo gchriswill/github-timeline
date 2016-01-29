@@ -9,20 +9,11 @@ import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-
 import java.util.List;
 
-/**
- * Created by gchriswill on 1/27/16.
- */
 public class FavoriteFragment extends ListFragment implements AdapterView.OnItemClickListener {
 
     List<News> entries;
-
-//    public FavouriteNewsFragment() {
-//
-//    }
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -36,12 +27,8 @@ public class FavoriteFragment extends ListFragment implements AdapterView.OnItem
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+        return inflater.inflate(R.layout.favorite_fragment, container, false);
 
-        View rootView = inflater.inflate(R.layout.favorite_fragment, container,
-                false);
-
-
-        return rootView;
     }
 
     @Override

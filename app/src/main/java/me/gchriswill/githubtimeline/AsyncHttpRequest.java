@@ -5,14 +5,8 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.AsyncTask;
-import android.util.Log;
 import android.widget.Toast;
 
-import java.util.List;
-
-/**
- * Created by gchriswill on 1/27/16.
- */
 public class AsyncHttpRequest extends AsyncTask<String, Void, String> {
 
     ProgressDialog dialog;
@@ -73,11 +67,7 @@ public class AsyncHttpRequest extends AsyncTask<String, Void, String> {
 
             HttpRequest handler = new HttpRequest();
 
-            Log.i("DO IN BACKGROUND", "Response : url : " + params[0]);
-
             result=handler.makeServiceCall(params[0]);
-
-
 
         } catch (final Exception e) {
 

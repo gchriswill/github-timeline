@@ -16,10 +16,8 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by gchriswill on 1/27/16.
- */
-public class PlaceholderFragment extends ListFragment implements CompleteTaskListener, AdapterView.OnItemClickListener {
+public class PlaceholderFragment extends ListFragment implements CompleteTaskListener,
+        AdapterView.OnItemClickListener {
 
     AsyncHttpRequest request;
     XMLPullParserHandler parser;
@@ -38,9 +36,7 @@ public class PlaceholderFragment extends ListFragment implements CompleteTaskLis
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.main_fragment, container, false);
-
-        return rootView;
+        return inflater.inflate(R.layout.main_fragment, container, false);
 
     }
 
@@ -59,16 +55,8 @@ public class PlaceholderFragment extends ListFragment implements CompleteTaskLis
 
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-        if(request == null) {
-
-            request = new AsyncHttpRequest(getActivity(), this, 0);
-            request.execute(getResources().getString(R.string.url_feed));
-
-        } else {
-
-            displayEntries(entries);
-
-        }
+        request = new AsyncHttpRequest(getActivity(), this, 0);
+        request.execute(getResources().getString(R.string.url_feed));
 
     }
 
@@ -87,8 +75,6 @@ public class PlaceholderFragment extends ListFragment implements CompleteTaskLis
                 parser = new XMLPullParserHandler();
 
                 setEntries(parser, result);
-
-                displayEntries(entries);
 
                 NewsAdapter adapter = new NewsAdapter(getActivity(), entries);
 
@@ -111,19 +97,6 @@ public class PlaceholderFragment extends ListFragment implements CompleteTaskLis
 
         entries = parser.parse(is);
 
-
-    }
-    private void displayEntries(List<News> entries) {
-
-        if( entries != null) {
-
-            for(News entry:entries) {
-
-                ///Log.i("DISPLAY ENTRIES", entry.id + "," + entry.name + "\n");
-
-            }
-
-        }
 
     }
 

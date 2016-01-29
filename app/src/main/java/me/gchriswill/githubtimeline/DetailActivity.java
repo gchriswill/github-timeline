@@ -1,8 +1,5 @@
 package me.gchriswill.githubtimeline;
 
-/**
- * Created by gchriswill on 1/27/16.
- */
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
@@ -11,8 +8,6 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
@@ -21,7 +16,6 @@ import android.widget.Toast;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 public class DetailActivity extends AppCompatActivity {
@@ -57,14 +51,12 @@ public class DetailActivity extends AppCompatActivity {
 
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-        Log.i("IMAGE", "onCreate: " + entry.imgUrl);
         new GetBitmapImageFromUrl().execute(entry.imgUrl);
 
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-
 
         getMenuInflater().inflate(R.menu.detail_menu, menu);
 
@@ -139,9 +131,11 @@ public class DetailActivity extends AppCompatActivity {
 
         @Override
         protected Bitmap doInBackground(String... params) {
+
             try {
 
-                profilePicBitmap = BitmapFactory.decodeStream((InputStream) new URL(params[0]).getContent() );
+                profilePicBitmap = BitmapFactory.decodeStream((InputStream)
+                        new URL(params[0]).getContent() );
 
             } catch (IOException e) {
 
